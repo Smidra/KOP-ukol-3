@@ -1,0 +1,21 @@
+%% OPmac - REF file (\inputref)
+\Xrefversion{2}
+\Xpage{1}
+\Xtoc{1}{\rm }{1}{Specifikace úlohy}{1}
+\Xfnote
+\Xtoc{1}{\rm }{2}{Rozbor řešení}{1}
+\Xfnote
+\Xtoc{1}{\rm }{3}{Popis kostry algoritmu}{1}
+\Xtoc{2}{\rm }{3.1}{Příprava hodnot pro FPTAS}{1}
+\Xtoc{2}{\rm }{3.2}{Alokace polí}{1}
+\Xpage{2}
+\Xtoc{2}{\rm }{3.3}{Vyplnění polí}{2}
+\Xtoc{2}{\rm }{3.4}{Nalezení řešení}{2}
+\Xtoc{2}{\rm }{3.5}{Cleanup}{2}
+\Xtoc{1}{\rm }{4}{Naměřené hodnoty a interpretace výsledků}{2}
+\Xtoc{2}{\rm }{4.1}{Srovnání výpočetních časů}{2}
+\Xpage{3}
+\Xpage{4}
+\Xtoc{2}{\rm }{4.2}{Porovnání relativních chyb}{4}
+\Xpage{5}
+\Xtoc{1}{\rm }{5}{Závěr}{5}

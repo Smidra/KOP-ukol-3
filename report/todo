@@ -1,0 +1,20 @@
+Popis implementovaných metod.
+
+Srovnání výpočetních časů 	(Tj. závislosti výpočetních časů na velikosti instance)
+	hrubé síly
+	metody větví a hranic
+	dynamického programování
+	heuristiky cena/váha (stačí jedna).
+	Grafy vítány.
+	
+Porovnání relativních chyb (průměrných a maximálních)
+	obou heuristik.
+	Tj. závislosti rel. chyby na velikosti instance
+
+
+
+
+U FPTAS algoritmu pozorujte (naměřte, zdokumentujte) závislost chyby a výpočetního času algoritmu na zvolené přesnosti zobrazení (pro několik různých přesností), srovnání maximální naměřené chyby s teoreticky předpokládanou.
+	Tj. zvolte několik požadovaných přesností (ε), v závislosti na ε měřte čas běhu a reálnou (maximální, případně i průměrnou) chybu algoritmu
+Zhodnocení naměřených výsledků.
+
