@@ -3,7 +3,7 @@ import copy  # for deep copy
 
 
 def fptas(self, epsilon):
-    self.complexity += 0
+    self.complexity = 0
     # -- Prepare values for FPTAS --
     # Calculate biggest price
     # If thing is heavier than knapsack can carry disregard it

@@ -5,7 +5,7 @@ KOP - Úkol 3
 - Promyslet a zkusit napojení na generátor
 - Promyslet a zkusit napojení na permutátor
 - Naskriptovat napojení na generátor
-- Měření složitosti pomocí konfigurací
+- ~~Měření složitosti pomocí konfigurací~~
 
 ## Zadání pro úkol 3
 

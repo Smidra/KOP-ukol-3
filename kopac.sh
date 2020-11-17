@@ -6,7 +6,7 @@
 
 # Setup of python
 TYPE="GEN"
-ALG="bab"
+ALG="redux"
 
 # Setup of generator
 THINGS=5        # total number of things

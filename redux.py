@@ -11,6 +11,8 @@ def sort_value(thing):
 
 
 def solve_redux(self):
+    self.complexity = 0
+
     # Sort array of stuff based on ratio
     # print(self.things_array)
     self.things_array.sort(key=sort_ratio, reverse=True)
@@ -20,6 +22,7 @@ def solve_redux(self):
     greedy_cost = 0
     # Take stuff utill you run out of space
     for thing in self.things_array:
+        self.complexity += 1
         # If I add one more will it be too much?
         if self.limit_weight < greedy_weight + thing.weight:
             break
@@ -34,6 +37,7 @@ def solve_redux(self):
     redux_builder = [0] * self.current_things
     self.things_array.sort(key=sort_value, reverse=True)
     for thing in self.things_array:
+        self.complexity += 1
         if thing.weight > self.limit_weight:
             # print("Cannot carry.")
             continue
