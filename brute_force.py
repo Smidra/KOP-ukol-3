@@ -4,6 +4,7 @@ import copy  # for deep copy
 # Solve the instance brute force
 def solve_brute(self):
     self.complexity_brute = 0
+    self.complexity = 0
     builder = []
     self.brute(self.limit_weight, self.min_cost, 0, 0, builder)
     return
@@ -28,6 +29,7 @@ def brute(self, lim_weight, min_cost, total_cost, size, solution_builder):
 
         # Complexity +1
         self.complexity_brute = self.complexity_brute + 1
+        self.complexity += 1
         return
 
 

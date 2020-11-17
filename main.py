@@ -77,8 +77,8 @@ def better_output( solution_location, instances_array, save_summary):
         return
 
     item_nr = 0
-    max_time = 0
-    avg_time = 0
+    max_complexity = 0
+    avg_complexity = 0
     max_error = 0
     avg_error = 0
 
@@ -94,20 +94,20 @@ def better_output( solution_location, instances_array, save_summary):
             one_percent = float(float(correct_solution)/100)
             # print("One percent from %d is %f" % ( int(correct_solution), one_percent ) )
             calculation_error = float(absolute_calculation_error/one_percent)
-        calculation_time = instances_array[item_nr].time
+        calculation_complexity = instances_array[item_nr].complexity
         max_error=max(max_error, calculation_error)
-        max_time=max(max_time, calculation_time)
-        avg_time += calculation_time
+        max_complexity=max(max_complexity, calculation_complexity)
+        avg_complexity += calculation_complexity
         avg_error += calculation_error
         item_nr += 1
 
     avg_error = float(avg_error)/float(len(instances_array))
-    avg_time = float(avg_time)/float(len(instances_array))
+    avg_complexity = float(avg_complexity)/float(len(instances_array))
 
-    print("%f; %f; %f; %f" % (max_time, avg_time, max_error, avg_error) )
+    print("%f; %f; %f; %f" % (max_complexity, avg_complexity, max_error, avg_error) )
 
     f = open(save_summary, "a")
-    f.write("%d; %f; %f; %f; %f\n" % ( instances_array[0].current_things, max_time, avg_time, max_error, avg_error))
+    f.write("%d; %f; %f; %f; %f\n" % ( instances_array[0].current_things, max_complexity, avg_complexity, max_error, avg_error))
     f.close()
 
     return

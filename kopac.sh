@@ -13,6 +13,7 @@ THINGS=5        # total number of things
 INSTANCES=150    # generate this much of knapsack instances
 MAX_WEIGHT=5000  # Maxmimum weight of a thing
 MAX_COST=5000    # Maxmimum cost of a thing
+PERMUTATIONS=10
 # Optional
 CAPACITY_TO_SUM_WEIGHT=0.8  # -m Ratio of capacity to sum weight. Default [0.8]. Can be interval.
 HEAVY_THINGS="bal"  # -w More *heavy*, *light* or *bal*anced things [bal]
@@ -38,6 +39,7 @@ KAM_ULOZIT_VYSLEDEK_COMPLEXITY="./calculated_${ALG}/${GENERATING_NAME}_complexit
 # echo ./hen/kg2 -n "$THINGS" -N "$INSTANCES" -W "$MAX_WEIGHT" -C "$MAX_COST" -m "$CAPACITY_TO_SUM_WEIGHT" -w "$HEAVY_THINGS" -c "$CORELATION" -k "$GRANULARITY"
 if [ ! -f "${GENERATING_PATH}_sol.dat" ]; then
   ./gen/kg2 -n "$THINGS" -N "$INSTANCES" -W "$MAX_WEIGHT" -C "$MAX_COST" -m "$CAPACITY_TO_SUM_WEIGHT" -w "$HEAVY_THINGS" -c "$CORELATION" -k "$GRANULARITY" > "${GENERATING_PATH}_inst.dat"
+  cat "${GENERATING_PATH}_inst.dat" | ./gen/kg_perm -d 1000 -N "${PERMUTATIONS}" > "${GENERATING_PATH}_permut.dat"
 fi
 
 # Is there a solution file? If not, create it.
@@ -52,7 +54,6 @@ fi
 python main.py ${KDE_JE_ZADANI} ${KAM_ULOZIT_VYSLEDEK_SOL} ${KAM_ULOZIT_VYSLEDEK_COMPLEXITY} ${KDE_JE_KONTROLNI_VYSLEDEK} ${KAM_ULOZIT_SUMMARY} ${JAKY_SOLVER}
 
 echo "========================================="
-
 echo "Solved with ${JAKY_SOLVER}."
 echo "N= $THINGS"
 echo "Generated instances: ${GENERATING_NAME}"

@@ -3,6 +3,7 @@ import copy  # for deep copy
 
 
 def dynamic(self):
+    self.complexity = 0
     # -- Create arrays --
     # Array for cost decomposition
     # self.decompose_array[1053][2] - [CENA][VEC]
@@ -27,6 +28,7 @@ def dynamic(self):
                 # Add thing
                 add_cell = self.decompose_array[cost_nr + current_thing.value][thing_nr + 1]
                 if current_cell + current_thing.weight < add_cell:
+                    self.complexity += 1
                     # My solution is better than currently present solution
                     # Otherwise what was in there was a better solution
                     self.decompose_array[cost_nr + current_thing.value][
@@ -38,6 +40,7 @@ def dynamic(self):
                 # Do not add thing
                 not_add_cell = self.decompose_array[cost_nr][thing_nr + 1]
                 if current_cell < not_add_cell:
+                    self.complexity += 1
                     # My solution is better than currently present solution
                     # Otherwise what was in there was a better solution
                     self.decompose_array[cost_nr][thing_nr + 1] = current_cell

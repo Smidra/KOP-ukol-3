@@ -3,6 +3,7 @@ import copy  # for deep copy
 
 
 def fptas(self, epsilon):
+    self.complexity += 0
     # -- Prepare values for FPTAS --
     # Calculate biggest price
     # If thing is heavier than knapsack can carry disregard it
@@ -68,6 +69,7 @@ def fptas(self, epsilon):
                 if current_thing.weight != -1: # Skip items bigger than knapsack
                     add_cell = self.decompose_array[cost_nr + current_thing.value][thing_nr + 1]
                     if current_cell + current_thing.weight < add_cell:
+                        self.complexity += 1
                         # My solution is better than currently present solution
                         # Otherwise what was in there was a better solution
                         self.decompose_array[cost_nr + current_thing.value][
@@ -79,6 +81,7 @@ def fptas(self, epsilon):
                 # Do not add thing
                 not_add_cell = self.decompose_array[cost_nr][thing_nr + 1]
                 if current_cell < not_add_cell:
+                    self.complexity += 1
                     # My solution is better than currently present solution
                     # Otherwise what was in there was a better solution
                     self.decompose_array[cost_nr][thing_nr + 1] = current_cell

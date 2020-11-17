@@ -31,7 +31,7 @@ Robustnost algoritmu znamená, že sledované parametry (zde tedy kvalita a výp
 - Jak reagují solvery na různé parametry generátoru?
 - Z toho co najdu navrhnu experiment a vyhodnotím kvalitu a náročnost.
 - Prozkoumej robustnost (použitých) solverů.
-- Zkoumej havně BRUTE, B&B, DYN, GREEDY/REDUX (, FPTAS pokud se chová jinak než DYN)
+- Zkoumej havně BRUTE, B&B, DYN, REDUX (, FPTAS pokud se chová jinak než DYN)
 
 - Prozkoumej závislost náročnosti (u REDUX i rel chybu) na
   - kapacita batohu VS sumární váha
