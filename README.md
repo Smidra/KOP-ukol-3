@@ -1,7 +1,7 @@
 KOP - Úkol 3
 ============
 ## TODO pro úkol 3
-- GitHub repo
+- ~~GitHub repo~~
 - Promyslet a zkusit napojení na generátor
 - Promyslet a zkusit napojení na permutátor
 - Naskriptovat napojení na generátor

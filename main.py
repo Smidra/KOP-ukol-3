@@ -3,6 +3,10 @@ from classes import *  # Custom made classes file
 import time
 
 
+
+# python main.py ${KDE_JE_ZADANI} ${KAM_ULOZIT_VYSLEDEK_SOL} ${KAM_ULOZIT_VYSLEDEK_COMPLEXITY} ${KDE_JE_KONTROLNI_VYSLEDEK} ${KAM_ULOZIT_SUMMARY} ${JAKY_SOLVER}
+# python main.py ${1}             ${2}                       ${3}                              ${4}                         ${5}                  ${6}
+
 # Read arguments, control program flow
 def main():
     # Load instances from file to objects
@@ -10,19 +14,36 @@ def main():
     load_instances_file(sys.argv[1], instances_file)
 
     # Solve every instance
-    for i in range(0, file_len(sys.argv[1])):
     # for i in range(3, 4):
+    for i in range(0, file_len(sys.argv[1])):
         start = time.process_time()
+
+        if sys.argv[6] == "brute":
+            instances_file[i].solve_brute()
+        elif sys.argv[6] == "bab":
+            instances_file[i].solve_branch_and_bound()
+        elif sys.argv[6] == "greedy":
+            instances_file[i].solve_greedy()
+        elif sys.argv[6] == "redux":
+            instances_file[i].solve_redux()
+        elif sys.argv[6] == "dynamic":
+            instances_file[i].solve_dynamic()
+        elif sys.argv[6] == "fptas3":
+            instances_file[i].solve_fptas(0.3)
+        else:
+            print("Pick a valid instance from: brute, bab, greedy, redux, dynamic, fptas3")
+
         # instances_file[i].solve_brute()
         # instances_file[i].solve_brute_cut()
         # instances_file[i].solve_branch_and_bound()
         # instances_file[i].solve_greedy()
-        instances_file[i].solve_redux()
+        # instances_file[i].solve_redux()
         # instances_file[i].solve_dynamic()
         # instances_file[i].solve_fptas(0.1)
         # instances_file[i].solve_fptas(0.3)
         # instances_file[i].solve_fptas(0.5)
         # instances_file[i].solve_fptas(0.9)
+
         end = time.process_time()
         # print("Elapsed time is %f" % (float(end-start)))
         instances_file[i].time = float(end - start)
@@ -48,9 +69,13 @@ def file_len(fname):
 # Better output
 def better_output( solution_location, instances_array, save_summary):
     # Open file with instances
-    f = open(solution_location, "r")
+    try:
+        f = open(solution_location, "r")
+    except:
+        print("======================")
+        print("This is python. Sorry but %s does not exist." % (solution_location) )
+        return
 
-    #
     item_nr = 0
     max_time = 0
     avg_time = 0
@@ -75,26 +100,6 @@ def better_output( solution_location, instances_array, save_summary):
         avg_time += calculation_time
         avg_error += calculation_error
         item_nr += 1
-        # print("Item %d OK" % (item_nr-1) )
-    # for line in f:
-    #     line = line.split()
-    #     if item_nr+1 != int(line[0]):
-    #         # print("Item nr> %d != %d <Currently reading" % (item_nr+1, int(line[0])))
-    #         continue
-    #     correct_solution = line[2]
-    #     calculated_solution = instances_array[item_nr].best_cost
-    #     if int(correct_solution) != 0:
-    #         absolute_calculation_error = abs(calculated_solution - int(correct_solution))
-    #         one_percent = float(float(correct_solution)/100)
-    #         # print("One percent from %d is %f" % ( int(correct_solution), one_percent ) )
-    #         calculation_error = float(absolute_calculation_error/one_percent)
-    #     calculation_time = instances_array[item_nr].time
-    #     max_error=max(max_error, calculation_error)
-    #     max_time=max(max_time, calculation_time)
-    #     avg_time += calculation_time
-    #     avg_error += calculation_error
-    #     item_nr += 1
-    #     print("Item %d OK" % (item_nr-1) )
 
     avg_error = float(avg_error)/float(len(instances_array))
     avg_time = float(avg_time)/float(len(instances_array))
