@@ -2,20 +2,46 @@
 \Xrefversion{2}
 \Xpage{1}
 \Xtoc{1}{\rm }{1}{Specifikace úlohy}{1}
-\Xfnote
 \Xtoc{1}{\rm }{2}{Rozbor řešení}{1}
 \Xfnote
-\Xtoc{1}{\rm }{3}{Popis kostry algoritmu}{1}
-\Xtoc{2}{\rm }{3.1}{Příprava hodnot pro FPTAS}{1}
-\Xtoc{2}{\rm }{3.2}{Alokace polí}{1}
+\Xtoc{2}{\rm }{2.1}{Popis metod}{1}
+\Xtoc{2}{\rm }{2.2}{Pilotní experimenty}{1}
 \Xpage{2}
-\Xtoc{2}{\rm }{3.3}{Vyplnění polí}{2}
-\Xtoc{2}{\rm }{3.4}{Nalezení řešení}{2}
-\Xtoc{2}{\rm }{3.5}{Cleanup}{2}
-\Xtoc{1}{\rm }{4}{Naměřené hodnoty a interpretace výsledků}{2}
-\Xtoc{2}{\rm }{4.1}{Srovnání výpočetních časů}{2}
+\Xtoc{1}{\rm }{3}{Naměřené hodnoty a interpretace výsledků}{2}
+\Xlabel{rob}{3.1}
+\Xtoc{2}{\rm }{3.1}{Robustnost}{2}
+\Xlabel{robus}{3.1}
+\Xlabel{rob-bab}{3.2}
 \Xpage{3}
+\Xlabel{rob-dyn}{3.3}
+\Xlabel{maxcena}{3.2}
+\Xtoc{2}{\rm }{3.2}{Dynamic se zhoršuje s rostoucí max cenou}{3}
 \Xpage{4}
-\Xtoc{2}{\rm }{4.2}{Porovnání relativních chyb}{4}
+\Xlabel{cen-bab}{3.5}
+\Xlabel{cen-dyn}{3.6}
 \Xpage{5}
-\Xtoc{1}{\rm }{5}{Závěr}{5}
+\Xlabel{corr}{3.3}
+\Xtoc{2}{\rm }{3.3}{BaB se zhoršuje s korelací cena-váha}{5}
+\Xlabel{corr-bab}{3.8}
+\Xpage{6}
+\Xlabel{corr-dyn}{3.9}
+\Xlabel{corr-redux}{3.10}
+\Xpage{7}
+\Xlabel{pomer}{3.4}
+\Xtoc{2}{\rm }{3.4}{Chyba redux závisí na poměru kapacity k sumární váze}{7}
+\Xlabel{pomer-redux}{3.12}
+\Xpage{8}
+\Xlabel{gran}{3.5}
+\Xtoc{2}{\rm }{3.5}{Granularita ovlivňuje kvalitu redux a složitost metody větí a hranic}{8}
+\Xlabel{unitab}{3.14}
+\Xlabel{gran-bab}{3.15}
+\Xpage{9}
+\Xlabel{gran-dyn}{3.16}
+\Xlabel{gran-redux}{3.17}
+\Xpage{10}
+\Xtoc{1}{\rm }{4}{Závěr}{10}
+\Xtoc{2}{\rm }{4.1}{Vyhodnocení robustnosti}{10}
+\Xtoc{2}{\rm }{4.2}{Vyhodnocení maximální ceny}{10}
+\Xtoc{2}{\rm }{4.3}{Vyhodnocení korelace cena/váha}{10}
+\Xtoc{2}{\rm }{4.4}{Vyhodnocení poměru kapacity k sumární váze}{10}
+\Xtoc{2}{\rm }{4.5}{Vyhodnocení granularity}{10}

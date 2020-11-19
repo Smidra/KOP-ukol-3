@@ -15,6 +15,8 @@ Sledujte:
 - Robustnost
 
 ### Kvalita 
+= Chyba
+
 Pro instance, kde známe exaktní řešení, se kvalita dá měřit absolutně. Tam, kde srovnáváme heuristiky mezi sebou, můžeme srovnávat pouze relativně. Tyto dva způsoby hodnocení je potřeba rozlišovat a konzistentně mezi nimi volit.
 
 ### Výpočetní náročnost
@@ -29,9 +31,13 @@ Robustnost algoritmu znamená, že sledované parametry (zde tedy kvalita a výp
 
 ### Co chtějí?
 - Jak reagují solvery na různé parametry generátoru?
-- Z toho co najdu navrhnu experiment a vyhodnotím kvalitu a náročnost.
+- Na základě zjištění navrhněte a proveďte experimentální vyhodnocení kvality řešení a výpočetní náročnosti.
+
 - Prozkoumej robustnost (použitých) solverů.
-- Zkoumej havně BRUTE, B&B, DYN, REDUX (, FPTAS pokud se chová jinak než DYN)
+  - brute
+  - bab
+  - dynamic (FPTAS pokud se chová jinak)
+  - redux
 
 - Prozkoumej závislost náročnosti (u REDUX i rel chybu) na
   - kapacita batohu VS sumární váha

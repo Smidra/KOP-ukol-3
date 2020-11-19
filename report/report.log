@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2020.11.8)  8 NOV 2020 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdfcsplain 2020.11.8)  19 NOV 2020 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -61,317 +61,276 @@ The \^, \`, \', \v, \" and \r expands to characters by ISO-8859-2.
 (./report.ref)
 \openout0 = `report.ref'.
 
-) [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}] [2 <./N
-K-time.pdf>] [3 <./ZKC-time.pdf> <./ZKW-time.pdf
-
-pdfTeX warning: pdfcsplain (file ./ZKW-time.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
->]
-Underfull \vbox (badness 1436) has occurred while \output is active
-\vbox(680.5899+1.94444)x452.96786, glue set 2.43124
-.\glue(\topskip) 1.66617
-.\hbox(8.33383+2.33347)x452.96786, glue set 263.42162fil
-..\write0<3>{\string \Xtoc {2}{\noexpand \rm }{4.2}{Porovnání relativních ch
-yb}\ETC.}
-..\tenbf 4
-..\tenbf .
-..\tenbf 2
-..\glue 13.50082
-..\tenbf P
-..\kern-0.37503
-..\tenbf o
-..\tenbf r
-..\tenbf o
-..\kern-0.37503
-..\tenbf v
-..\tenbf n
-..\tenbf á
-..\tenbf n
-..\tenbf í
-..\glue 4.50027 plus 2.25014 minus 1.50009
-..\tenbf r
-..\tenbf e
-..\tenbf l
+) [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \vbox (badness 8038) has occurred while \output is active
+\vbox(680.5899+1.94444)x452.96786, glue set 4.31769
+.\glue(\topskip) 0.0
+.\hbox(10.00053+2.80014)x452.96786, glue set 122.22667fil
+..\write0<3>{\string \Xtoc {1}{\noexpand \rm }{3}{Naměřené hodnoty a interpr
+eta\ETC.}
+..\tenbf 3
+..\glue 16.20088
+..\tenbf N
 ..\tenbf a
-..\tenbf t
-..\tenbf i
-..\tenbf v
+..\tenbf m
+..\tenbf ě
+..\tenbf ř
+..\tenbf e
 ..\tenbf n
-..\tenbf í
-..\tenbf c
-..\kern-0.37503
+..\tenbf é
+..\glue 5.40028 plus 2.70013 minus 1.8001
 ..\tenbf h
-..\glue 4.50027 plus 2.25014 minus 1.50009
+..\tenbf o
+..\kern0.45001
+..\tenbf d
+..\tenbf n
+..\tenbf o
+..\tenbf t
+..\kern-0.45003
+..\tenbf y
+..\glue 5.40028 plus 2.70013 minus 1.8001
+..\tenbf a
+..\glue 5.40028 plus 2.70013 minus 1.8001
+..\tenbf i
+..\tenbf n
+..\kern-0.45003
+..\tenbf t
+..\tenbf e
+..\tenbf r
 ..etc.
+.\mark{{3} {Naměřené hodnoty a interpretace výsledků}}
 .\penalty 10000
 .\glue 6.0 plus 2.0 minus 2.0
 .\penalty 11333
 .\glue(\parskip) 0.0 plus 1.0
-.\glue(\baselineskip) 2.72209
-.\hbox(6.94444+1.94444)x452.96786, glue set - 0.76254
-..\thefont O
-..\thefont b
-..\kern0.27779
-..\thefont d
-..\thefont o
-..\thefont b
-..\thefont n
-..\thefont ě
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont j
+.\glue(\baselineskip) 2.25542
+.\hbox(6.94444+1.94444)x452.96786, glue set 152.18951fil
+..\thefont T
+..\kern-0.83334
 ..\thefont a
-..\thefont k
-..\kern-0.27779
-..\thefont o
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont u
-..\penalty 10000
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont s
-..\thefont r
-..\thefont o
-..\kern-0.27779
-..\thefont v
-..\thefont n
-..\thefont á
-..\thefont n
-..\thefont í
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont č
-..\thefont a
-..etc.
-.\penalty 10000
-.\glue(\baselineskip) 2.55556
-.\hbox(7.5+2.5)x452.96786, glue set 0.11598
-..\thefont k
 ..\thefont t
-..\thefont e
-..\thefont r
-..\thefont é
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont n
-..\thefont e
-..\thefont c
-..\kern-0.27779
-..\thefont h
-..\kern-0.27779
-..\thefont y
-..\thefont b
-..\thefont u
-..\thefont j
-..\thefont í
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont (
-..\thefont d
-..\thefont y
-..\thefont n
-..\thefont a
-..\thefont m
-..\thefont i
-..\thefont c
-..\thefont ,
-..\glue 3.33333 plus 2.08331 minus 0.88889
-..\thefont b
-..\thefont r
-..etc.
-.\glue(\baselineskip) 2.55556
-.\hbox(6.94444+1.94444)x452.96786, glue set 0.8509
-..\thefont I
-..\penalty 10000
+..\thefont o
 ..\glue 3.33333 plus 1.66666 minus 1.11111
 ..\thefont k
-..\thefont d
-..\thefont y
-..\thefont ž
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont z
-..\thefont d
-..\thefont e
-..\glue 3.33333 plus 1.66666 minus 1.11111
+..\kern-0.27779
+..\thefont a
+..\thefont p
+..\thefont i
+..\thefont t
+..\thefont o
 ..\thefont l
-..\thefont o
-..\thefont g
 ..\thefont a
-..\thefont r
-..\thefont i
-..\thefont t
-..\thefont m
-..\thefont i
-..\thefont c
-..\kern-0.27779
-..\thefont k
-..\kern-0.27779
-..\thefont á
 ..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont o
 ..\thefont s
-..\thefont a
-..etc.
-.\glue(\baselineskip) 3.11111
-.\hbox(6.94444+1.94444)x452.96786, glue set 0.31645
-..\thefont c
-..\kern-0.27779
 ..\thefont h
-..\kern-0.27779
-..\thefont y
+..\thefont r
+..\thefont n
+..\thefont e
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont a
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont p
+..\thefont r
+..\thefont e
+..\thefont z
+..\thefont e
+..\thefont n
+..etc.
+.\penalty -200
+.\glue 6.0 plus 2.0 minus 2.0
+.\glue(\parskip) 0.0 plus 1.0
+.\glue(\baselineskip) 4.1226
+.\hbox(8.33383+0.0)x452.96786, glue set 354.99242fil
+..\write0<3>{\Xlabel{rob}{3.1}}
+..\write0<3>{\string \Xtoc {2}{\noexpand \rm }{3.1}{Robustnost}{\the \pageno }}
+
+..\tenbf 3
+..\tenbf .
+..\tenbf 1
+..\glue 13.50082
+..\tenbf R
+..\tenbf o
+..\tenbf b
+..\tenbf u
+..\tenbf s
+..\tenbf t
+..\tenbf n
+..\tenbf o
+..\tenbf s
+..\tenbf t
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\penalty 10000
+.\glue 6.0 plus 2.0 minus 2.0
+.\penalty 11333
+.\glue(\parskip) 0.0 plus 1.0
+.\glue(\baselineskip) 5.05556
+.\hbox(6.94444+1.94444)x452.96786, glue set 0.69359
+..\thefont U
+..\glue 3.33333 plus 1.66498 minus 1.11221
+..\thefont h
+..\thefont r
+..\thefont u
 ..\thefont b
 ..\kern0.27779
-..\thefont o
-..\kern-0.27779
-..\thefont v
-..\kern-0.27779
-..\thefont o
-..\thefont s
-..\thefont t
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont r
-..\thefont e
-..\thefont d
-..\thefont u
-..\thefont x
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont a
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont j
-..\thefont e
-..\thefont m
-..\thefont n
 ..\thefont é
 ..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont r
-..etc.
-.\penalty 10000
-.\glue(\baselineskip) 3.11111
-.\hbox(6.94444+1.94444)x452.96786, glue set 320.99538fil
+..\thefont s
+..\thefont í
+..\thefont l
+..\thefont y
+..\glue 3.33333 plus 1.66666 minus 1.11111
 ..\thefont n
+..\thefont e
+..\thefont n
+..\thefont í
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont t
+..\thefont ř
+..\thefont e
+..\thefont b
 ..\thefont a
+..\glue 3.33333 plus 1.66666 minus 1.11111
 ..\thefont m
 ..\thefont ě
 ..\thefont ř
+..\thefont i
+..\thefont t
+..etc.
+.\penalty 10000
+.\glue(\baselineskip) 3.11111
+.\hbox(6.94444+1.94444)x452.96786, glue set 0.49358
+..\thefont s
+..\thefont l
+..\thefont o
+..\thefont ž
+..\thefont i
+..\thefont t
+..\thefont o
+..\thefont s
+..\thefont t
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont j
 ..\thefont e
+..\glue 3.33333 plus 1.66666 minus 1.11111
 ..\thefont n
-..\thefont é
-..\thefont ,
-..\glue 3.33333 plus 2.08331 minus 0.88889
+..\thefont e
+..\thefont m
+..\thefont ě
+..\thefont n
+..\thefont n
+..\thefont á
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\mathon
+..\thefont 2
+..\hbox(3.01389+0.0)x5.44336, shifted -3.62892
+...\mF n
+..\mathoff
+..\thefont .
+..\glue 4.44444 plus 4.99997 minus 0.37036
+..\thefont H
+..\thefont e
+..\thefont u
+..etc.
+.\penalty 10000
+.\glue(\baselineskip) 3.11111
+.\hbox(6.94444+1.94444)x452.96786, glue set 73.38383fil
+..\thefont P
+..\thefont r
+..\thefont ů
+..\thefont c
+..\kern-0.27779
+..\thefont h
+..\thefont o
+..\kern0.27779
+..\thefont d
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont p
+..\kern0.27779
+..\thefont e
+..\thefont r
+..\thefont m
+..\kern-0.27779
+..\thefont u
+..\thefont t
+..\thefont a
+..\thefont c
+..\thefont í
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont j
+..\thefont e
+..\glue 3.33333 plus 1.66666 minus 1.11111
 ..\thefont t
 ..\thefont e
 ..\thefont d
 ..\thefont y
 ..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont 0
-..\thefont .
-..\thefont 1
-..\thefont ,
-..\glue 3.33333 plus 2.08331 minus 0.88889
-..\thefont 0
-..\thefont .
-..\thefont 3
-..\thefont ,
-..\glue 3.33333 plus 2.08331 minus 0.88889
-..\thefont a
-..\glue 3.33333 plus 1.66666 minus 1.11111
-..\thefont 0
-..\thefont .
-..\thefont 5
 ..etc.
-.\glue 12.0 plus 4.0 minus 4.0
-.\glue(\lineskip) 1.0
-.\vbox(572.62672+1.94444)x452.96786
-..\hbox(276.94016+0.0)x452.96786, glue set 27.31465fil
-...\glue 0.0 plus 1.0fil minus 1.0fil
-...\hbox(276.94016+0.0)x398.33858
-....\pdfrefximage(276.94016+0.0)x398.33858
-...\glue 0.0 plus 1.0fil minus 1.0fil
-..\glue(\parskip) 0.0 plus 1.0
-..\glue(\baselineskip) 5.05556
-..\hbox(6.94444+1.94444)x452.96786, glue set 98.22346fil
-...\glue(\leftskip) 20.0 plus 1.0fil
-...\tenbf F
-...\tenbf i
-...\tenbf g
-...\tenbf u
-...\tenbf r
-...\tenbf e
-...\glue 3.83331 plus 1.91666 minus 1.27777
-...\tenbf 4
-...\tenbf .
-...\tenbf 4
-...\kern 5.0
-...\thefont C
-...\thefont h
-...\kern-0.27779
-...\thefont y
-...\thefont b
-...\kern0.27779
-...\thefont o
-...\kern-0.27779
-...\thefont v
-...\kern-0.27779
-...\thefont o
-...\thefont s
-...\thefont t
-...\glue 3.33333 plus 1.66666 minus 1.11111
-...\thefont v
-...\thefont ý
-...\thefont p
-...\kern0.27779
-...etc.
-..\glue(\lineskip) 1.0
-..\hbox(268.74213+0.0)x452.96786, glue set 27.31465fil
-...\glue 0.0 plus 1.0fil minus 1.0fil
-...\hbox(268.74213+0.0)x398.33858
-....\pdfrefximage(268.74213+0.0)x398.33858
-...\glue 0.0 plus 1.0fil minus 1.0fil
-..\glue(\parskip) 0.0 plus 1.0
-..\glue(\baselineskip) 5.05556
-..\hbox(6.94444+1.94444)x452.96786, glue set 95.4457fil
-...\glue(\leftskip) 20.0 plus 1.0fil
-...\tenbf F
-...\tenbf i
-...\tenbf g
-...\tenbf u
-...\tenbf r
-...\tenbf e
-...\glue 3.83331 plus 1.91666 minus 1.27777
-...\tenbf 4
-...\tenbf .
-...\tenbf 5
-...\kern 5.0
-...\thefont C
-...\thefont h
-...\kern-0.27779
-...\thefont y
-...\thefont b
-...\kern0.27779
-...\thefont o
-...\kern-0.27779
-...\thefont v
-...\kern-0.27779
-...\thefont o
-...\thefont s
-...\thefont t
-...\glue 3.33333 plus 1.66666 minus 1.11111
-...\thefont v
-...\thefont ý
-...\thefont p
-...\kern0.27779
-...etc.
+.\glue(\parskip) 0.0 plus 1.0
+.\glue(\baselineskip) 2.55556
+.\hbox(7.5+2.5)x452.96786, glue set - 0.22107
+..\hbox(0.0+0.0)x20.0
+..\thefont V
+..\thefont ý
+..\thefont s
+..\thefont l
+..\thefont e
+..\thefont d
+..\thefont k
+..\thefont y
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont p
+..\thefont i
+..\thefont l
+..\thefont o
+..\thefont t
+..\thefont n
+..\thefont í
+..\thefont h
+..\thefont o
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\thefont e
+..\thefont x
+..\thefont p
+..\kern0.27779
+..\thefont e
+..\thefont r
+..\thefont i
+..\thefont m
+..\thefont e
+..\thefont n
+..etc.
+.\penalty 10000
+.etc.
 
- [4 <./NK-error.pdf> <./ZKC-error.pdf
+ [2 <./robust-bab.pdf>]
+l.151 OPmac WARNING: duplicated label [maxcena], ignored.
+[3 <./robust-dynamic.pdf>] [4 <./maxcena-bab.pdf> <./maxcena-dyn.pdf
 
-pdfTeX warning: pdfcsplain (file ./ZKC-error.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
->] [5 <./ZKW-error.pdf>] )</usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/cs/csr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csti10.pfb>
-Output written on report.pdf (5 pages, 202152 bytes).
+pdfTeX warning: pdfcsplain (file ./maxcena-dyn.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>] [5 <./corr-bab.pdf>] [6 <./corr-dyn.pdf> <./corr-redux.pdf
+
+pdfTeX warning: pdfcsplain (file ./corr-redux.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] [7 <./pomer-redux.pdf>] [8 <./gran-bab.pdf>] [9 <./gran-dyn.pdf> <./gran-red
+ux.pdf
+
+pdfTeX warning: pdfcsplain (file ./gran-redux.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] [10] )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/cs/csti10.pfb>
+Output written on report.pdf (10 pages, 257006 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 206 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

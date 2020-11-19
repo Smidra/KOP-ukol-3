@@ -1,119 +1,353 @@
 \input opmac
 
-\tit Exaktní a heuristická řešení konstruktivního problému batohu
-\centerline{\bf 8. listopadu 2020, Radek Šmíd}
+\tit Experimentální hodnocení kvality algoritmů
+\centerline{\bf 20. listopadu 2020, Radek Šmíd}
 \medskip
-\centerline{\it https://github.com/Smidra/KOP-ukol-2}
+\centerline{\it https://github.com/Smidra/KOP-ukol-3}
 
 
 % Specifikace úlohy
 \sec Specifikace úlohy
-Cílem bylo naprogramovat konstruktivní řešení problému batohu šesti způsoby.
+Cílem bylo experimentálně zhodnotit algoritmy naprogramované v předchozích cvičení. Najít a ověřit závislosti kvality a náročnosti řešení na různých druzích náhodně generovaných instancí. Instance jsou generovány pomocí dodaného náhodného generátoru. Různým nastavením parametrů generátoru docílíme různých druhů testovaných instancí.
+
+Dále bylo cílem zhodnotit robustnost čtyřech použitých metod, tedy
 \begitems\style n
 * Hrubá síla
 * Metoda větví a hranic
 * Metoda dynamického programování
-* Greedy heuristika
 * Redux heuristika
-* FPTAS pseudopolynomiální aproximační schéma
 \enditems
-
-Naši implmentaci pak experimentálně ověřit a vyhodnotit při výpočtu na stažených datech. Složitost výpočtu instance problému měříme v~čase výpočtu.\fnote{https://moodle-vyuka.cvut.cz/mod/assign/view.php?id=89697}
-
 
 
 
 % Rozbor možných řešení + Jak jsem řešil já
 \sec Rozbor řešení
-Při programování vycházím z~objektově orientovaného návrhu z~vypracovaného předchozího úkolu. Ten byl rozšířen o~měření času výpočtu v~procesu pomocí python funkce {\it process\_time()}. Tato funkce se nachází v~pythonu od verze 3.3.\fnote{https://docs.python.org/3/library/time.html}
+Při řešení jsem jsem měnil vždy pouze jeden parametr generátoru. Složitost jsem měřil v počtu navštíve\-ných instatncí. Pro hrubou sílu a metodu větví a hranic (B\&B) je triviální, co to znamená. Pro metodu dynamické programování s dekompozicí podle ceny počítám jeden navštívený stav jako čtení/zápis zahrnující buňkou která není nekonečno. U heuristiky redux je jeden navštívený stav porovnání zda se zadaná věc ještě vejde do batohu.
 
-Řešení pomocí hrubé síly a metody větví a hranic nebylo pozměneno od předchozího úkolu. Ostatní čtyři způsoby jsem naimplementoval opět jako metody třídy \uv{KnapsackInstance}.
+Počet instancí a jejich velikost v generátoru byly zvoleny co nejtěžší a největší tak, aby jeden běh netrval na mém počítači více jak 5 minut. Změny parametrů jsem vždy krokoval nejméně čtyřikrát abych dodržel zadání\fnote{https://moodle-vyuka.cvut.cz/mod/assign/view.php?id=89700}.
 
-Dále jsem program rozšířil o~automatické počítání průměrných a maximálních hodnot času a chyby. Stejně tak jako o~další skript zlepšující automatizaci.
+Generování permutací jsem prováděl automatizovaně pomocí bash skriptu volající program kg\_perm se vstupem předem vygenerovaným z generátoru kg2. Seed generátoru jsem volil defaultní statický. Abych mohl porovnávat kvalitu řešení bylo třeba vygenerovat vždy alespoň jedno správné řešení. Pokud řešení neexistuje, skript to pozná a vygeneruje ho pomocí metody dynamického programování jako referenční.
 
-Poměr ceny a váhy pro greedy a redux heuristiku je atribut třídy věci, který se vypočítá přímo v~konstruktoru. Greedy pak pouze seřadí pole věcí v~instanci podle jednoho z~jejích atributů. Redux heuristika využívá kódu identického s~implementací greedy, akorát je rozšířena o~porovnání s~nejlepší věcí před uložením řešení.
-
-Metoda dynamického programování provádí dekompozici podle ceny. Její kód je pak využit i v~implementaci FPTAS.
-
-
-% Popis kostry algritmu
-\sec Popis kostry algoritmu
-Implementace algoritmu FPTAS se skládá z~pěti kroků. Vstupem je požadované epsilon ($e$).
-
-\secc Příprava hodnot pro FPTAS
-Nejdříve se jedná o~nalezení největší váhy předmětu v~instanci společně s~vyřazením věcí těžších než maximální povolená hmotnost. Pokud jsou vyřazeny všechny věci, řešením jsou samé nuly a FPTAS končí. Výpočet $K$ může být v~extrémních případech  zkomplikován tím, že je zadané $e$ příliš malé. V~takový moment je epsilon postupně zvyšováno, dokud není $K$ nenulové. S~vypočeným $K$ dojde poté k~redukci včech cen. To může sice vnést do výpočů drobné chyby, ale není to častý případ.
-
-\secc Alokace polí
-Je vytvořeno pole pro dekompozici a pomocné pole pro konstrukci řešení.
-
-\vfill\break
+\secc Popis metod
+% Zpráva by měla obsahovat aspoň stručný popis jednotlivých algoritmů. Jinak nemusí být jasné, jaký typ B&B, DP, ... byl použit.
+Různé algoritmy výpočtu jsou implementovány jako metody třídy {\bf KnapsackInstance}, která reprezentuje jeden problém baothu. Hrubá síla je implementována pomocí rekurzivní funkce. Metoda větví a hranic je její rozšíření o ořezávání. Dynamické programování využívá dekompozici podle ceny. Heuristika redux je implementována běžným způsobem.
 
 
-\secc Vyplnění polí
-Pole dekompozice je celé proiterováno. Na počátku je pole plné nekonečen, kromě hodnoty [0][0] = 0. Pro každé políčko obsahující něco jiného než nekonečno se pokusíme zapsat do dvou buněk v~dalším sloupci. Nejprve do řádky vyšší o~cenu věci stávajícího sloupce (věc byla přidána) a pak do buňky ve stejné řádce (věc nebyl přidána). Do jednotlivých polí zapisujeme celkovou váhu všech přijatých předmětů, ale pouze tehdy pokud je menší než případná přítomná hodnota.
+\secc Pilotní experimenty
+% Nemám jak ověřit: výkon metod, které vycházejí ze stavu "prázdný batoh" se může lišit od metod, vycházejících ze stavu "plný batoh" podle poměru celková váha / kapacita batohu,
+% Robustnost
+% Dynamic se zhoršuje s rostoucí max cenou
+% BaB se zhoršuje s korelací cena-váha
+% Redux se snižuje s poměrem kapacity k sumární váze
+%    Chybovost?
+% \secc Formulování experiemtnů
+Podezření na závislosti ze zadání jsem se pokusil prověřit experimentací. Výkon metod vycházející z rozdílných vztahů prázdný/plný batoh jsem se rozhodl neověřovat, protože žádnou takovou metodu nemám z předchozích cvičení naimplementovanou.
 
-\secc Nalezení řešení
-Řešení se nachází v~posledním sloupci tabulky. Jde o~nejvýše postavenou buňku (nejlepší možná cena) která obsahuje přijatelnou váhu. Řešení musí být ještě zpět přenásobeno hodnotou $K$, aby odpovídalo původním cenám.
+Při experimentování s parametry generátoru a permutátoru podle zadání jsem pojal podezření na následující vztahy.
+\begitems
+* Dynamické programování a Metoda větví a hranic nebudou robustní (\ref[rob]).
+* Dynamické programování s dekompozicí podle ceny se zhoršuje s maximální cenou (\ref[maxcena]).
+* Složitost Metody větví a hranic se zvyšuje s korelací cena--váha (\ref[corr]).
+* Vyšší poměr kapacity batohu k sumární váze zlepšuje úspěšnost heuristiky redux (\ref[pomer]).
+* Nižší granularita zlepšuje kvalitu redux a zhoršuje složitost metody větí v hranic (\ref[gran]).
+\enditems
 
-\secc Cleanup
-Pole jsou smazána, aby opakované běhy nezahlcovaly paměť OS.
 
 
 % Přehledná prezentace výsledků
 \sec Naměřené hodnoty a interpretace výsledků
-K~dispozici byly tři testovací sady: náhodná (NK), zlá cena (ZKC), zlá váha (ZKW). Všech šest algoritmů bylo stpuštěno na všech třech sadách. FPTAS dokonce třikrát se třemi hodnotami epsilon (0.1, 0.3, 0.5). Všechna data z~experimentů jsou k~dispozici ve složkách {\bf calculated\_xy} v~repozitáři projektu.
+
+Tato kapitola shrne a prezentuje výsledky provedených experimentů. 
 
 
-\secc Srovnání výpočetních časů
-Pro každou sadu dat jsem vytvořil jeden graf. V~každém grafu se nachází čtrnáct čar rozdělených barvou podle typu algoritmu. Křížky značí maximální naměřený čas, kolečka průměrný ze všech měřených běhů. FPTAS je uvedeno pouze s~nejvyšší (0.1) a nejnižší (0.5) přesností, aby nebyly grafy přehlceny informacemi. Grafy jsou vykresleny na logaritmické ose, pro zvýšení přehlednosti.
 
-% Graf NK časy
-\centerline{\picwidth=16cm \inspic{NK-time.pdf} }
-\caption/f Časy výpočtu pro instance NK
 
-% Graf ZKC časy
-\centerline{\picwidth=16cm \inspic{ZKC-time.pdf} }
-\caption/f Časy výpočtu pro instance ZKC
 
-% Graf ZKW časy
-\centerline{\picwidth=16cm \inspic{ZKW-time.pdf} }
-\caption/f Časy výpočtu pro instance ZKW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\label[rob]\secc Robustnost
+U hrubé síly není třeba měřit robustnost, protože algoritmus jistě je robustní. Nedělá chyby a jeho složitost je neměnná $2^n$. Heuristika redux je také jistě robustní, protože první krok je prvky seřadit. Průchod permutací je tedy identický. Složitost řazení do měřené složitosti nepočítáme.
+
+Výsledky pilotního experimentu naznačují (s instancemi o deseti věcech), že zbylé dva algoritmy by mohly být na permutaci vstupu závislé. Generované instance jsou vytvářeny podle parametrů popsaných v tabulce \ref[robus]. Všechny vygenerované hodnoty jsou přiloženy ve složce {\bf data} a {\bf calculated\_X}. Měřit kvalitu výsledků nemá smysl, protože obě dvě zbylé metody dávají vždy správné výsledky.
+
+\midinsert
+\centerline{\table{|r|l|}{\crl
+Věcí 			& 10\cr
+Instancí		& 100\cr
+Max. váha		& 1000\cr
+Max. cena		& 1000\cr
+Kapacita:Celková váha		& 0.8\cr
+Těžké věci		& bal\cr
+Korelace váha/cena	& uni\cr
+Granularita		& 1\crli
+}}
+\label[robus]
+\caption/f Parametry generátoru pro testování robustnosti
+\endinsert
+
+Kvůli velému rozdílu hodnot jsem se rozhodl robustnost rozdělit do dvou grafů. Graf \ref[rob-bab] pro metodu větví a hranic a graf \ref[rob-dyn] pro dynamické programování s dekompozicí podle ceny. 
+
+\centerline{\picwidth=17cm \inspic{robust-bab.pdf} \label[rob-bab]}
+\caption/f Náročnost metody větví a hranic při permutacích 
+
+\centerline{\picwidth=17cm \inspic{robust-dynamic.pdf} \label[rob-dyn]}
+\caption/f Náročnost dynamického programování při permutacích
+\bigskip
+\bigskip
+\bigskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\label[maxcena]\secc Dynamic se zhoršuje s rostoucí max cenou
+Změnu maximální ceny jsem škáloval tak, aby byly hodnoty v intervalu násobně nižší i vyšší než maximální váha. Konkrétní hodnoty generátoru jsou k dispozici v tabulce \ref[maxcena].
+
+Kvůli velikému rozdílu hodnot jsem se znovu rozhodl rozdělit prezentaci do dvou grafů. Graf \ref[cen-bab] pro metodu větví a hranic společně s redux. Graf \ref[cen-dyn] zachycuje dynamické programování s dekompozicí podle ceny a hrubou sílu. Kvalita výpočtu je relevantní pouze u redux a tam je konstatní na maximální hodnotě 4.9 procent s odchylkou nejvýše 0.1 a průměrné hodnotě 0.69 procent s odchylkou nejvýše 0.05.
+
+\bigskip
+\bigskip
+\midinsert
+\centerline{\table{|r|l|}{\crl
+Věcí 			& 15\cr
+Instancí		& 100\cr
+Max. váha		& 500\cr
+Max. cena		& {\bf 100/250/500/750/1000/1250/1500}\cr
+Kapacita:Celková váha		& 0.8\cr
+Těžké věci		& bal\cr
+Korelace váha/cena	& uni\cr
+Granularita		& 1\crli
+}}
+\label[maxcena]
+\caption/f Parametry generátoru pro testování zvedání maximální ceny
+\endinsert
+\vfil\break
+
+
+\centerline{\picwidth=17cm \inspic{maxcena-bab.pdf} \label[cen-bab]}
+\caption/f Náročnost metod redux a větví a hranic při zvedání maximální ceny
+
+\centerline{\picwidth=17cm \inspic{maxcena-dyn.pdf} \label[cen-dyn]}
+\caption/f Náročnost dynamického programování a hrubé síly při zvedání maximální ceny
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \vfill\break
-\secc Porovnání relativních chyb
-Obdobně jako u~srovnání času jsou grafy rozděleny podle typu dat. U~chybovosti jsem vynechal algoritmy které nechybují (dynamic, brute, b\&b). V~grafu chybovosti pro ZKC splývá chybovost greedy a redux. I~když zde logaritmická osa není příliš intuitivní je to jedinný způsob jak zároveň zachytit vysokou chybovost redux a jemné rozdíly mezi variantami FPTAS. Varianty FPTAS jsou zde uvedeny všechny naměřené, tedy 0.1, 0.3, a 0.5.
-% Graf NK chybovost
-\midinsert
-\centerline{\picwidth=14cm \inspic{NK-error.pdf} }
-\caption/f Chybovost výpočtu pro instance NK
+\label[corr]\secc BaB se zhoršuje s korelací cena-váha
+Generátor dovoluje nastavit korelaci pouze na tři stupně (uni, corr, strong). Abyh vyhověl požadavkům na alespoň čtyři hodnoty vykreslil jsem tyto hodnoty jako tři rozdíle křivky při rostoucím počtu věcí v batohu. Složitost hrubé síly je konstantní vůči změnám korelace. Složitost redux byla mírně nižší při hodnotách {\bf corr}, ale v zájmu nepřehlcení čtenáře jsem z toho další graf nevykresloval.
 
-% Graf ZKC chybovost
-\centerline{\picwidth=14cm \inspic{ZKC-error.pdf} }
-\caption/f Chybovost výpočtu pro instance ZKC
+\bigskip
+\midinsert
+\centerline{\table{|r|l|}{\crl
+Věcí 			& {\bf 10/14/16/18/20}\cr
+Instancí		& 200\cr
+Max. váha		& 1000\cr
+Max. cena		& 1000\cr
+Kapacita:Celková váha		& 0.8\cr
+Těžké věci		& bal\cr
+Korelace váha/cena	& {\bf uni/corr/strong}\cr
+Granularita		& 1\crli
+}}
+\caption/f Parametry generátoru pro testování korelace váha/cena
 \endinsert
 
-% Graf ZKW chybovost
-\centerline{\picwidth=14cm \inspic{ZKW-error.pdf} }
-\caption/f Chybovost výpočtu pro instance ZKW
+\centerline{\picwidth=17cm \inspic{corr-bab.pdf} \label[corr-bab]}
+\caption/f Náročnost metody větví a hranic pro druhy korelací váha/cena
+\vfill\break
 
 
-% \secc FPTAS závislost chyby a výpočetního času na epsilon
+\centerline{\picwidth=17cm \inspic{corr-dyn.pdf} \label[corr-dyn]}
+\caption/f Náročnost dynamického programování pro druhy korelací váha/cena
+
+\centerline{\picwidth=17cm \inspic{corr-redux.pdf} \label[corr-redux]}
+\caption/f Chyba redux pro druhy korelací váha/cena
+
+\bigskip
+\bigskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\vfill\break
+\label[pomer]\secc Chyba redux závisí na poměru kapacity k sumární váze
+% Chybovost?
+% capacity to sum weight 0.1 0.3 0.5 0.7 0.8 0.9 0.99
+Z proběhlého výpočtu jsem vykreslil data pro redux jak ohledně chyby tak složitosti do jednoho grafu. Graf \ref[pomer-redux] tak má jako osu y zároveň chybovost procent, tak složitost v počtu navštívených konfigurací.
+
+\bigskip
+\midinsert
+\centerline{\table{|r|l|}{\crl
+Věcí 			& 20\cr
+Instancí		& 200\cr
+Max. váha		& 1000\cr
+Max. cena		& 1000\cr
+Kapacita:Celková váha		& {\bf 0.1/0.3/0.5/0.7/0.8/0.9/0.99}\cr
+Těžké věci		& bal\cr
+Korelace váha/cena	& uni\cr
+Granularita		& 1\crli
+}}
+\caption/f Parametry generátoru pro testování poměru kapacita -- celková váha
+\endinsert
+
+\centerline{\picwidth=17cm \inspic{pomer-redux.pdf} \label[pomer-redux]}
+\caption/f Chyba redux pro zvyšující se poměr kapacita -- celková váha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\vfill\break
+\label[gran]\secc Granularita ovlivňuje kvalitu redux a složitost metody větí a hranic
+Protože generátor umožňuje nastavení granularity pro těžké i lehké věci, vykresil křivky v grafech pro změny granularity pro obojí. Složitost/chybovost pro hodnotu {\bf uni} můžete nalézt v tabulce \ref[unitab]. Složitost heuristiky redux je pro všechny hodnoty konstantní s maximální odchylkou 2, a nevykazuje žádné známky změny, proto není vykreslena.
+
+\bigskip
+\midinsert
+\centerline{\table{|r|r|r|}{\crl
+ Metoda 			& max		& avg \crl
+Hrubá síla 			& 1048576 / 0.0	& 1048576 / 0.0\cr
+Metoda větví a hranic		& 775 / 0.0 	& 103 / 0.0  \cr
+Dynamické programování		& 102133 / 0.0	& 77908 / 0.0\cr
+Redux				& 20 / 4.7 & 18.5 / 0.6 \crl
+}}
+\caption/f Složitost a chybovost metod pro rozložení {\bf uni}
+\label[unitab]
+\endinsert
+
+
+\bigskip
+\midinsert
+\centerline{\table{|r|l|}{\crl
+Věcí 			& 20\cr
+Instancí		& 300\cr
+Max. váha		& 1000\cr
+Max. cena		& 1000\cr
+Kapacita:Celková váha		& 0.8\cr
+Těžké věci		& {\bf bal/light/heavy}\cr
+Korelace váha/cena	& uni\cr
+Granularita		& {\bf 0.1/0.3/0.5/0.7/1}\crli
+}}
+\caption/f Parametry generátoru pro testování poměru kapacita -- celková váha
+\endinsert
+
+\centerline{\picwidth=17cm \inspic{gran-bab.pdf} \label[gran-bab]}
+\caption/f Složitost metody větví a hranic pro zvyšující se granularitu
+
+\vfill\break
+
+\centerline{\picwidth=17cm \inspic{gran-dyn.pdf} \label[gran-dyn]}
+\caption/f Složitost dynamického programování pro zvyšující se granularitu
+
+\centerline{\picwidth=17cm \inspic{gran-redux.pdf} \label[gran-redux]}
+\caption/f Chybovost redux pro zvyšující se granularitu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 % Interpretace výsledků
+\vfill\break
 \sec Závěr
-Zdaleka nejrychlejší výpočet nám zajistí heuristiky greedy a redux, bohužel jejich maximální chybovost je také zdaleka největší. I~když v~sadách NK a ZKC chybovost greedy klesá s~množstvím věcí, nemusí tomu tomu tak být vždy, jak je vidět z~chyb u~sady ZKW. Redux je ve většině případů o~trošku rychlejší než greedy, ale najdou se i výjimky (ZKC27). Co se týče rychlosti jsou si algoritmy velmi podobné. Naměřená chybovost byla identická pro sadu ZKC, protože se při výpočtu instancí ani jednou nestane, že by se zvolilo řešení vypočítané pomocí redux. Jinak je na tom redux vždy přinejhorším stejně jako greedy. Nejlepší výsledky vykazuje redux na sadě ZKW, kde má velmi dobrou průměrnou chybovost. I~tam je ale jeho maximální chybovost druhá největší, hned po greedy.
 
-Pro sady NK a ZKC jsou dle očekávání nejpomalejší hrubá síla a b\&b. Ne ale pro všechny velikosti instancí. Kvůli vysoké režiji spojené s~dekompozicí podle ceny (alokování pole) jsou rychlejší pro menší instance (cca 25). Speciálně ve srovnání s~dynamic, které také poskytuje bezchybné výsledky.
+\secc Vyhodnocení robustnosti
+Na grafu \ref[rob-bab] je zřetelně vidět závislost počtu permutací na maximální složitosti metody větí v hranic. Průměrnou složitost to ale neovlivňuje. Po vyhodnocení grafu \ref[rob-dyn] s dynamickým programováním se původní předpoklad zásadní nerobustnosti neprokázal. I přesto je ale vidět, jak při nejnižší hodnotě je nižší jak maximální složitost, tak i průměrná.
 
-Pro sadu ZKW to platí u~hrubé síly, ale už ne pro b\&b. Tam je dle naměřených výsledků metoda větví a hranic alespoň stejně tak dobrá jako dynamické programování.
 
-FPTAS a dynamické programování vykazují obdobné chování. Čím větší zvolíme přesnost tím déle výpočet potrvá. I~tak ale bude rychlejší než samotné dynamické programování. Chybovost FPTAS a dynamic pro instance NK a ZKC stabilně klesá. Čím více věcí v~batohu, tím menší chyba. Také ale čím menší epsilon, tím menší chyba.
+\secc Vyhodnocení maximální ceny
+Z grafu \ref[cen-bab] je evidentní, že zvyšování maximální ceny nijak neovlivňuje metodu větví a hranic ani metodu redux. Hrubá síla je jako vždy také neměnná. Dynamické programování s dekompozicí podle ceny ale ukazuje jasný trend. S rostoucí maximální cenou se zvyšuje jak maximální tak průměrná složitost.
 
-Pro všechna data se průměrná chyba se drží vždy pod hranicí stanovenou pomocí epsilon.
+\secc Vyhodnocení korelace cena/váha
+Výsledky pro metodu větví a hranic jsou přesvědčivé. Nejvyšší složitosti nabývá metoda při střední korelaci (corr). Největší rozdíl je patrný hlavně při vyšších hodntách a srovnání korelace uni a zbylých dvou, viz graf \ref[corr-bab]. Náročnost dynamického programování i redux není zvyšováním korelace příliš ovlivněna. Chybovost redux v grafu \ref[corr-redux] ukazuje, že korelace uni dosahuje vždy nejlepších vlastností.
+
+
+\secc Vyhodnocení poměru kapacity k sumární váze
+Z naměřených výsledků je zřemé, že pro rostoucí poměr kapacity batohu k sumární váze roste složitost heuristiky redux. S rostoucím poměrem ale také jasně klesá chybovost.
+
+
+\secc Vyhodnocení granularity
+Zvyšující se granularita má malý vliv na průměrnou hodnotu všech měřený metod. U b\&b a dynamického programování je o trochu lepší průměrná složitost u lehkých věcí než u těžkých. Naopak chybovost redux vychází ve prospěch těžších věcí. Maxilmální hodnoty složitosti se chovají u dynamického programování podobně. Maximální hodnoty složitosti pro b\&b mají svá lokální minima, ale konkrétní závislost jsem nevyl schopen vysledovat. Stejně tak u maximální chybovosti pro redux.
+
 
 \bye
